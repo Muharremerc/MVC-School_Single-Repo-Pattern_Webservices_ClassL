@@ -1,0 +1,17 @@
+﻿@model List<DAL.Model.Lesson>
+<table>
+    <tr>TeacherName</tr>
+    @foreach (var item in Model)
+    {
+        foreach (var item2 in item.TeacherLessons)
+        {
+            <tr>
+                <td>@item2.Teacher.Name</td>
+            </tr>
+        }
+
+
+    }
+    
+
+</table>

@@ -1,0 +1,11 @@
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\DAL.dll.config
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\DAL.dll
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\DAL.pdb
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\obj\Debug\DAL.dll
+C:\Users\Muharrem\source\repos\School_Pattern_Webservices_ClassL_mvc\DAL\obj\Debug\DAL.pdb

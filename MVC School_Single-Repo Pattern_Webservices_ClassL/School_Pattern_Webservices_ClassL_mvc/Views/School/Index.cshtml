@@ -1,0 +1,602 @@
+﻿@model School_Pattern_Webservices_ClassL_mvc.Models.SchoolModel
+@{
+    ViewBag.Title = "Index";
+}
+<table border="1" >
+    <tr>
+        <td>
+            <table border="1">
+
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Surname</td>
+                </tr>
+                @foreach (var item in Model.St)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td><a href="javascript:getStudentLessons(@item.Id)">...</a></td>
+                    </tr>
+
+
+
+                }
+
+            </table>
+        </td>
+        <td>
+
+            <table border="1">
+                <tr>
+                    <td>Teacher Name</td>
+                </tr>
+                @foreach (var item in Model.Tc)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td><a href="javascript:getTeacherLessons(@item.Id)">...</a></td>
+                    </tr>
+                }
+
+            </table>
+        </td>
+        <td>
+
+            <table border="1">
+                <tr>
+                    <td>Lesson Name</td>
+                </tr>
+                @foreach (var item in Model.Ls)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td><a href="javascript:getLessonTeacher(@item.Id)">...</a></td>
+                    </tr>
+                }
+
+            </table>
+        </td>
+        <td>
+
+            <table border="1">
+                <tr>
+                    <td>Class Name</td>
+                </tr>
+                @foreach (var item in Model.C)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td><a href="javascript:getClassStudent(@item.Id)">...</a></td>
+                    </tr>
+                }
+
+            </table>
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>
+
+
+            <div id="Student">
+
+
+            </div>
+        </td>
+        <td>
+
+           
+
+            <div id="Lesson">
+
+
+            </div>
+        </td>
+        <td>
+            <div id="Teacher">
+
+
+            </div>
+
+        </td>
+        <td>
+            <div id="Class">
+
+
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <table border="1">
+                <tr>
+                    <td colspan="2" align="center">Add Student</td>
+                    
+
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td><input type="text" id="name" name="name" /></td>
+                    
+                </tr>
+                <tr>
+                    <td>surname</td>
+                    <td><input type="text" id="surname" name="surname" /></td>
+                
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>    
+               <select id="cselect">
+                        @foreach (var item in Model.C)
+                                {
+                            <option value="@item.Name">
+                                @item.Name
+                            </option>
+
+                        }
+            </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><a href="javascript:addStudent()">Add Student</a></td>
+                  
+
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table border="1" >
+                <tr>
+                    <td colspan="2" align="center">Add Teacher</td>
+                </tr>
+                <tr>
+                    <td>Teacher Name</td>
+                    <td><input type="text" id="tname" name="tname" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><a href="javascript:addTeacher()">Add Teacher</a></td>
+                </tr>
+            </table>
+             
+            
+        </td>
+        <td>
+            <table border="1">
+                <tr>
+                    <td colspan="2" align="center">Add Lesson</td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        Lesson Name
+                    </td>
+                    <td>
+                        <input type="text" id="lname" name="lname" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><a href="javascript:addLesson()">Add Lesson</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+            </table>
+           
+           
+
+        </td>
+        <td>
+            <table border="1">
+                <tr>
+                    <td colspan="2" align="center">Add Class</td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        Class Name
+                    </td>
+                    <td>
+                        <input type="text" id="cname" name="cname" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><a href="javascript:addClass()">Add Class</a></td>
+                </tr>
+            </table>
+            
+           
+        </td>
+    </tr>
+    <tr>
+        <td>
+               <table border="1">
+                    <tr>
+                        <td colspan="2" align="center">Add Student-Lessons</td>
+
+
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            <select id="selectname">
+                                @foreach (var item in Model.St)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Name
+                                    </option>
+
+                                }
+                            </select>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+                        <td>Lesson</td>
+                        <td>
+                            <select id="selectlname">
+                                @foreach (var item in Model.Ls)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Name
+                                    </option>
+
+                                }
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><a href="javascript:addStudentLessons()">Add Student-Lessons</a></td>
+
+
+                    </tr>
+                </table>
+        </td>
+        <td colspan="2">
+                    <table border="1" align="center">
+            <tr>
+                <td colspan="2" align="center">Add Teacher Lesson</td>
+
+
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <select id="selectnamest">
+                        @foreach (var item in Model.Tc)
+                        {
+                            <option value="@item.Id">
+                                @item.Name
+                            </option>
+
+                        }
+                    </select>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>Lesson</td>
+                <td>
+                    <select id="selectlnamels">
+                        @foreach (var item in Model.Ls)
+                        {
+                            <option value="@item.Id">
+                                @item.Name
+                            </option>
+
+                        }
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><a href="javascript:addTeacherLessons()">Add Student-Lessons</a></td>
+
+
+            </tr>
+        </table>
+        </td>
+        <td>
+
+            <table border="1" align="center">
+                <tr>
+                    <td colspan="2" align="center">Add Teacher Class</td>
+
+
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <select id="selectnamet">
+                            @foreach (var item in Model.Tc)
+                            {
+                                <option value="@item.Id">
+                                    @item.Name
+                                </option>
+
+                            }
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Class</td>
+                    <td>
+                        <select id="selectlnamec">
+                            @foreach (var item in Model.C)
+                            {
+                                <option value="@item.Id">
+                                    @item.Name
+                                </option>
+
+                            }
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><a href="javascript:addTeacherClass()">Add Teacher-Class</a></td>
+
+
+                </tr>
+            </table>
+
+        </td>
+       
+    </tr>
+
+</table>
+
+
+
+
+
+
+<script type="text/javascript">
+    function getStudentLessons(id) {
+        $.ajax({
+            url: '@Url.Action("StudentLessons", "School")',
+             type: 'POST',
+             dataType: 'html',
+             data: {id},
+             success: function (data) {
+                 $("#Student").html(null);
+                 $("#Student").html(data);
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function getTeacherLessons(id) {
+        $.ajax({
+
+            url: '@Url.Action("TeacherLessons", "School")',
+             type: 'POST',
+             dataType: 'html',
+             data: {id},
+             success: function (data) {
+                 $("#Lesson").html(null);
+                 $("#Lesson").html(data);
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function getLessonTeacher(id) {
+        $.ajax({
+
+            url: '@Url.Action("LessonsTeacher", "School")',
+             type: 'POST',
+             dataType: 'html',
+             data: {id},
+             success: function (data) {
+                 $("#Teacher").html(null);
+                 $("#Teacher").html(data);
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+
+    function getClassStudent(id) {
+        $.ajax({
+
+            url: '@Url.Action("ClassStudent", "School")',
+             type: 'POST',
+             dataType: 'html',
+             data: {id},
+             success: function (data) {
+                 $("#Class").html(null);
+                 $("#Class").html(data);
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function addStudent() {
+
+        $.ajax({
+
+            url: '@Url.Action("CreateStudent", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "name": $("#name").val(),
+                 "surname": $("#surname").val(),
+                 "clas": $("#cselect option:selected").val()
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function addLesson() {
+
+        $.ajax({
+
+            url: '@Url.Action("AddLesson", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "lname": $("#lname").val()
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function addClass() {
+
+        $.ajax({
+
+            url: '@Url.Action("AddClass", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "cname": $("#cname").val()
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+    function addTeacher() {
+
+        $.ajax({
+
+            url: '@Url.Action("addTeacher", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "tname": $("#tname").val()
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function addStudentLessons() {
+
+        $.ajax({
+
+            url: '@Url.Action("addStudentLessons", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "name": parseInt($("#selectname option:selected").val()),
+                  "lname": parseInt($("#selectlname option:selected").val())
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function addTeacherLessons() {
+
+        $.ajax({
+
+            url: '@Url.Action("addTeacherLessons", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "tname": parseInt($("#selectnamest option:selected").val()),
+                 "lname": parseInt($("#selectlnamels option:selected").val())
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+    function addTeacherLesson() {
+
+        $.ajax({
+
+            url: '@Url.Action("addTeacherClass", "School")',
+             type: 'POST',
+             dataType: 'Json',
+             data: {
+                 "tname": parseInt($("#selectnamet option:selected").val()),
+                 "cname": parseInt($("#selectnamec option:selected").val())
+             },
+             success: function (data) {
+                 window.location.reload(true);
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+    }
+
+</script>

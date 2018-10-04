@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cabfdc801f6b47908c7245617ab23385" Name="Diagram1">
+        <EntityTypeShape EntityType="MVC_SchoolModel.Class" Width="1.5" PointX="5.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.Lesson" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.StudentClass" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.StudentLesson" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.Teacher" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.TeacherClass" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_SchoolModel.TeacherLesson" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_StudentClass_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_TeacherClass_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_StudentLesson_Lesson" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_TeacherLesson_Lesson" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_StudentClass_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_StudentLesson_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_TeacherClass_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_SchoolModel.FK_TeacherLesson_Teacher" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

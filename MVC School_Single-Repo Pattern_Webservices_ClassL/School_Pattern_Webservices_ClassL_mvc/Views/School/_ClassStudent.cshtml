@@ -1,0 +1,26 @@
+﻿@model List<DAL.Model.Class>
+<table>
+    <tr>
+        <td>
+            StudentName
+        </td>
+        <td>
+            StudentLesson
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        foreach (var item2 in item.StudentClasses)
+        {
+            <tr>
+
+                <td>@item2.Student.Name</td>
+                <td><a href="javascript:getStudentLessons(@item2.Student.Id)">...</a></td>
+            </tr>
+        }
+
+
+    }
+
+
+</table>
